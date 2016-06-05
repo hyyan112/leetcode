@@ -10,7 +10,7 @@ class Solution(object):
         """
         r = dict()
         for i, item in enumerate(nums):
-            if r.has_key(item) and i - r[item] <= k:
+            if item in r.keys() and i - r[item] <= k:
                 return True
             else:
                 r[item] = i
