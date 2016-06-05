@@ -1,20 +1,20 @@
 # encoding:utf-8
 """
-Given a binary tree, return the preorder traversal of its nodes' values.
+Given a binary tree, return the inorder traversal of its nodes' values.
 
 For example:
-Given binary tree {1,#,2,3},
+Given binary tree [1,null,2,3],
    1
     \
      2
     /
    3
-return [1,2,3].
+return [1,3,2].
 
 Note: Recursive solution is trivial, could you do it iteratively?
-===========================
-给一个树,通过前序遍历获得所有节点的值
-重点在于`前序`,即优先将根节点的值放入结果集
+===============================
+中序遍历获得所有节点的值
+即优先将左节点的值放入结果集
 """
 
 
@@ -25,20 +25,19 @@ Note: Recursive solution is trivial, could you do it iteratively?
 #         self.left = None
 #         self.right = None
 
-
 class Solution(object):
-    def preorderTraversal(self, root):
+    def inorderTraversal(self, root):
         """
         :type root: TreeNode
         :rtype: List[int]
         """
-        res = []
         temp = []
+        res = []
         while root or temp:
             while root:
                 temp.append(root)
-                res.append(root.val)
                 root = root.left
             root = temp.pop()
+            res.append(root.val)
             root = root.right
         return res
