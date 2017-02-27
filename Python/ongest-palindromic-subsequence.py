@@ -24,6 +24,20 @@ One possible longest palindromic subsequence is "bb".
 状态初始条件：dp[i][i]=1 （i=0：n-1）
 状态转移方程：dp[i][j]=dp[i+1][j-1] + 2  if（str[i]==str[j]）
             dp[i][j]=max(dp[i+1][j],dp[i][j-1])  if （str[i]!=str[j]）
+
+提供思路,但超时
+class Solution(object):
+    def longestPalindromeSubseq(self, s):
+        l=len(s)
+        dp=[[0 for _ in range(l)] for _ in range(l) ]
+        for i in range(l-1,-1,-1):
+            dp[i][i]=1
+            for j in range(i+1,l):
+                if s[i]==s[j]:
+                    dp[i][j]=dp[i+1][j-1]+2
+                else:
+                    dp[i][j]=max(dp[i+1][j],dp[i][j-1])
+        return dp[0][l-1]
 """
 
 
